@@ -13,6 +13,8 @@ interface UserInfo {
   isSignup?: boolean;
 }
 
+const API_BASE_URL = 'https://cvc-xi15.onrender.com';
+
 export default function App() {
   const [currentState, setCurrentState] = useState<AppState>("login");
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
@@ -43,7 +45,7 @@ export default function App() {
       const formData = new FormData();
       formData.append('file', files[0]); // Only one file expected
 
-      const response = await fetch('http://127.0.0.1:8002/draft/upload', {
+      const response = await fetch(`${API_BASE_URL}/draft/upload`, {
         method: 'POST',
         body: formData,
       });
